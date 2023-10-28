@@ -1,0 +1,52 @@
+/* UploadPage.css */
+.UploadPage {
+    text-align: center;
+  }
+  
+  .upload-content {
+    position: relative;
+    background: #050505; /* Blue background */
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .background-image {
+    background: url('../../public/images/wallpapersden.com_a-dark-city-4k-warrior-adventure_3072x2048.jpg') center center;
+    background-size: cover;
+    /*  opacity: 0.2; Low opacity for the background image */
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+  
+  .content-overlay {
+    background-color: rgb(255, 255, 255); /* White overlay with some opacity */
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    color: #000000;
+  }
+  
+  button.button {
+    background-color: #0074d9;
+    color: white;
+    border: none;
+    border-radius: 20px;
+    padding: 10px 20px;
+    font-size: 18px;
+    cursor: pointer;
+    margin-top: 20px;
+  }
+  
+  /* Media query for mobile responsiveness */
+  @media (max-width: 768px) {
+    h1 {
+      font-size: 24px;
+    }
+  }
+  

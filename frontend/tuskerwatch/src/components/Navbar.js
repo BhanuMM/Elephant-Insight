@@ -1,30 +1,35 @@
-import React, { useState } from 'react';
-import '../styles/Navbar.css';
+import React from 'react';
+import '../styles/Navbar.css'; // Your custom styles
+import Logo from '../images/logo1.png';
 
 function Navbar() {
-  const [menuOpen, setMenuOpen] = useState(false);
-
-  const toggleMenu = () => {
-    setMenuOpen(!menuOpen);
-  };
-
   return (
-    <nav className="navbar">
-      <div className="navbar-logo">
-        <img src="logo.png" alt="Logo" />
-      </div>
-      <div className={`navbar-hamburger ${menuOpen ? 'open' : ''}`} onClick={toggleMenu}>
-        <div className="bar"></div>
-        <div className="bar"></div>
-        <div className="bar"></div>
-      </div>
-      <div className={`navbar-links ${menuOpen ? 'active' : ''}`}>
-        <ul>
-          <li><a href="#">Home</a></li>
-          <li><a href="#">About</a></li>
-          <li><a href="#">Services</a></li>
-          <li><a href="#">Contact</a></li>
-        </ul>
+    <nav className="navbar navbar-expand-lg navbar-light fixed-top">
+      <div className="container">
+        <a className="navbar-brand" href="#">
+          <img src={Logo} alt="Logo" className="logo-img" />
+        </a>
+        <div className="collapse navbar-collapse justify-content-end">
+          <ul className="navbar-nav">
+            <li className="nav-item">
+              <a className="nav-link" href="#">
+                Home
+              </a>
+            </li>
+            <li className="nav-item">
+              <a className="nav-link" href="#">
+                About Research
+              </a>
+            </li>
+            <li className="nav-item">
+              <a className="nav-link" href="#">
+                Team
+              </a>
+            </li>
+            
+            
+          </ul>
+        </div>
       </div>
     </nav>
   );

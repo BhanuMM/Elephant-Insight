@@ -1,5 +1,4 @@
 import React from 'react';
-import '../styles/App.css';
 import UploadPage from './UploadPage';
 import Home from './Home';
 import { Routes,Route} from 'react-router-dom';

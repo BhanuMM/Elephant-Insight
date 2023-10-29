@@ -42,7 +42,7 @@ nav a {
 }
 
 .main-content {
-  background: url('../../public/images/wallpapersden.com_a-dark-city-4k-warrior-adventure_3072x2048.jpg') center center;
+  background: url('../images/pxfuel.jpg') center center;
   background-size: cover;
   height: 100vh;
   display: flex;
@@ -87,7 +87,7 @@ footer {
   background-color: #333;
   color: white;
   padding: 10px 0;
-  position: fixed;
+  position: relative;
   bottom: 0;
   width: 100%;
 }

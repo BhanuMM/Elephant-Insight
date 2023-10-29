@@ -1,0 +1,38 @@
+/* Home.css */
+
+.main-content {
+  background: url('../images/pxfuel.jpg') center center;
+  background-size: cover;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.content-overlay {
+  background-color: rgba(0, 0, 0, 0.59);
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+  color: white;
+}
+
+.centered-logo {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 0 auto 20px;
+}
+.green-button {
+    background-color: #269f2a; /* Green background color */
+    color: white; /* Text color */
+    border: 2px solid #000; /* Black border */
+  }
+  
+  .green-button:hover {
+    background-color: #55eb55; /* Light green background color on hover */
+    color: #000; /* Black text color on hover */
+    border: 2px solid #000; /* Black border */
+  }
+
+/* Home.css */

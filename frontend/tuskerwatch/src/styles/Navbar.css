@@ -1,107 +1,60 @@
-/* Navbar.css */
-.navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: #333;
-    padding: 10px 0;
-    position: fixed;
-    width: 100%;
-    z-index: 100;
-  }
-  
-  .navbar-logo img {
-    width: 40px;
-    margin-left: 20px;
-  }
-  
-  .navbar-links ul {
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
-    display: flex;
-  }
-  
-  .navbar-links ul li {
-    margin: 0 10px;
-  }
-  
-  .navbar-links ul li a {
-    color: white;
-    text-decoration: none;
-  }
-  
-  .navbar-hamburger {
-    display: none;
-    flex-direction: column;
-    cursor: pointer;
-    margin-right: 20px;
-  }
-  
-  .bar {
-    width: 25px;
-    height: 3px;
-    background-color: white;
-    margin: 3px 0;
-    transition: 0.4s;
-  }
-  
-  .bar.change {
-    transform: rotate(-45deg);
-    background-color: #0074d9; /* Blue background color when active */
-  }
-  
-  .navbar-links.active {
-    display: flex;
-    flex-direction: column;
-    position: absolute;
-    background-color: #333;
-    top: 60px;
-    right: 0;
-    width: 100%;
-  }
-  
-  .navbar-links.active ul li {
-    margin: 10px 0;
-  }
-  
-  .navbar-hamburger.open .bar:nth-child(1) {
-    transform: rotate(-45deg) translate(-5px, 6px);
-  }
-  
-  .navbar-hamburger.open .bar:nth-child(2) {
-    opacity: 0;
-  }
-  
-  .navbar-hamburger.open .bar:nth-child(3) {
-    transform: rotate(45deg) translate(-5px, -6px);
-  }
-  
-  /* Media query for mobile responsiveness */
-  @media (max-width: 768px) {
-    .navbar-links {
-      display: none;
-      position: absolute;
-      top: 60px;
-      right: 0;
-      background-color: #333;
-    }
-  
-    .navbar-links.active {
-      display: block; /* Show the menu as a dropdown on mobile */
-    }
-  
-    .navbar-links ul {
-      list-style-type: none;
-      padding: 0;
-      margin: 0;
-    }
-  
-    .navbar-links ul li {
-      text-align: center;
-    }
-    .navbar-hamburger {
-        display: flex;
-      }
+/* Your custom CSS (Navbar.css) */
+/* This is your custom CSS to add any additional styling or overrides for the Bootstrap Navbar component */
+
+/* Adjust the logo size and margin */
+.logo-img {
+  width: 150px;
+  margin-left: 20px;
 }
+
+/* Customize the background color and padding for the Navbar */
+.navbar {
+  background-color: #2a2a2a;
+  padding: 10px 0;
+}
+
+/* Style the navigation links */
+.nav-link {
+  color: #dbdbdb; /* Change link color */
+  font-weight: bold;
+}
+
+footer {
+  background-color: #333;
+  color: white;
+  text-align: center;
+  padding: 10px 0;
+  position: relative;
+  bottom: 0;
+  width: 100%;
+}
+/* Add any additional custom styles as needed */
+
+/* Mobile Styles */
+@media (max-width: 768px) {
+  /* Hide standard navigation links */
+  /* .navbar-nav {
+    display: none;
+  } */
+
+  /* Display a list of mobile menu items in the dropdown */
+  .navbar-toggler {
+    display: block;
+  }
+
+  .navbar-collapse {
+    display: none;
+  }
+
+  .navbar-nav.show {
+    display: block;
+  }
+
+  /* Style the mobile navigation links */
+  .nav-link.mobile {
+    color: #333; /* Change link color */
+    font-weight: bold;
+    padding: 1rem 1rem; /* Adjust padding for mobile items */
+  }
   
+}

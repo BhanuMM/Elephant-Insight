@@ -24,39 +24,35 @@ function UploadPage() {
 
   return (
     <div>
-
-    
     <div className="UploadPage">
       <Navbar />
       <div className="container">
-      <div className="row mt-5">
-          <div className="col-12 text-center">
-            <img src={Logo2} alt="Your Logo" className="centered-logo" />
+      <div className="row mt-5 mb-3">
+          <div className="col-12 mt-3 text-center">
+            <img src={Logo2} alt="Your Logo" className="centered-logo" style={{ maxWidth: '400px' }} />
           </div>
+          <hr /> 
         </div>
         <div className="row">
           <div className="col-md-6 text-center ">
-            <h2>Upload Your Image</h2>
-            <input type="file" accept="image/*" onChange={handleImageUpload} />
+            <h1 className="lightfont"> Upload Your Image Here</h1>
+            <input type="file" accept="image/*" onChange={handleImageUpload} className="mb-3 lightfont rounded-pill"/>
             {imageSrc && (
             <div className="col-md-12 text-center image-box">
-              <img src={imageSrc} alt="Uploaded Image" className="img-fluid" style={{ maxWidth: '500px' }} />
-              <button className="btn btn-success  mt-5">Start Identifying</button>
+              <button className="btn btn-primary rounded-pill btn-lg green2-button mt-2 mb-3">Start Identifying</button>
+              <img src={imageSrc} alt="Uploaded Image" className="img-fluid" style={{ maxWidth: '600px' }} />
+              
             </div>
           )}
           </div>
-          <div className="col-md-6 text-left">
-            <h2>Instructions</h2>
-            <ul>
-              <li>Step 1: Upload an image on the left.</li>
+          <div className="col-md-6 px-5">
+            <h1 className="lightfont mb-3">How Elephantinsight Works</h1>
+            <ul className="lightfont ">
+              <li>Step 1: Upload an imagfe on the left.</li>
               <li>Step 2: View the uploaded image below.</li>
               <li>Step 3: Follow the instructions on the right.</li>
-              {/* Add more instructions as needed */}
             </ul>
           </div>
-        </div>
-        <div className="row">
-         
         </div>
       </div>
       

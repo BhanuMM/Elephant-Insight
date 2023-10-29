@@ -1,43 +1,35 @@
 /* UploadPage.css */
 .UploadPage {
-  text-align: center;
+  /* text-align: center; */
   position: relative;
   background-color: #fdfdfd;
   background: url('../images/bg1.jpg') center center;
   background-size: cover;
   /* opacity: 0.1; */
   height: 100vh;
-  /* z-index: -100; */
+}
+.lightfont{
+  color: #fdfdfd;
+}
+.green2-button {
+  background-color: #269f2a; /* Green background color */
+  font-weight: 600;
+  color: rgb(4, 4, 4); /* Text color */
+  border: 2px solid #000; /* Black border */
 }
 
-
-.image-upload {
-  flex: 1;
-  padding: 20px;
-  background-color: rgba(255, 255, 255, 0.7);
-  border-radius: 10px;
-  text-align: center;
-  color: #000000;
+.green2-button:hover {
+  background-color: #2ed50d; /* Light green background color on hover */
+  color: #000; /* Black text color on hover */
+  border: 2px solid #000; /* Black border */
 }
 
-.image-upload h2 {
-  font-size: 24px;
+hr {
+  border: 0;
+  height: 5px;
+  background: white;
+  margin: 20px 0; /* Add margin for spacing */
 }
-
-.image-box {
-  max-width: 500px;
-  width: 100%;
-  box-sizing: border-box;
-  padding: 10px;
-  margin-top: 20px;
-}
-
-.image-box img {
-  width: 100%;
-  height: auto;
-}
-
-
 /* Media query for mobile responsiveness */
 @media (max-width: 768px) {
   .upload-content {

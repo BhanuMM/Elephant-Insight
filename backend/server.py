@@ -1,8 +1,10 @@
-from flask import Flask , jsonify 
+from flask import Flask, request, jsonify
 from flask_cors import CORS
+import os
 
 from Functions.fileuploads import configure_file_uploads, upload_image
 from Functions.testfunc import get_animal_names
+from resources.automatedpipeline import run_automated_pipeline
 
 app = Flask(__name__)
 CORS(app) 
@@ -13,7 +15,21 @@ configure_file_uploads(app)
 # Add the file upload route
 @app.route('/api/uploadimage', methods=['POST'])
 def handle_upload_image():
-    return upload_image()
+    upload_response = upload_image(app)
+    
+    # if 'error' in upload_response.get_json():
+    #     return upload_response
+    if 'error' in upload_response:
+        return jsonify({"error server 1": upload_response['error']})
+    
+    # Process the uploaded image using your automated pipeline
+    final_results = run_automated_pipeline(os.path.join("Functions/testu", upload_response['filename']))
+    
+    if 'error' in final_results:
+        return jsonify({"error server": final_results['error']})
+    
+    # Return the final results to the client
+    return jsonify({"results": final_results})
 
 @app.route('/')
 def hello():

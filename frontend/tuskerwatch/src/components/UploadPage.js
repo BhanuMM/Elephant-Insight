@@ -8,13 +8,13 @@ function UploadPage() {
   const [imageSrc, setImageSrc] = useState(null);
   const [uploadedImage, setUploadedImage] = useState(null);
 
-  const [animalNames, setAnimalNames] = useState([]);
-  useEffect(() => {
-    fetch('http://127.0.0.1:5000/api/animal_names')
-      .then((response) => response.json())
-      .then((data) => setAnimalNames(data.animal_names))
-      .catch((error) => console.error('Error fetching animal names:', error));
-  }, []);
+  // const [animalNames, setAnimalNames] = useState([]);
+  // useEffect(() => {
+  //   fetch('http://127.0.0.1:5000/api/animal_names')
+  //     .then((response) => response.json())
+  //     .then((data) => setAnimalNames(data.animal_names))
+  //     .catch((error) => console.error('Error fetching animal names:', error));
+  // }, []);
 
   const handleImageUpload = (e) => {
     const file = e.target.files[0];
@@ -48,7 +48,7 @@ function UploadPage() {
           }
         })
         .then((data) => {
-          console.log("file uploaded" ,data);
+          console.log("BM -file uploaded" ,data.results);
         })
         .catch((error) => {
           console.error('Error uploading image:', error);
@@ -109,7 +109,7 @@ function UploadPage() {
                 <li>Step 2: View the uploaded image below.</li>
                 <li>Step 3: Follow the instructions on the right.</li>
               </ul>
-                {animalNames.length > 0 && (
+                {/* {animalNames.length > 0 && (
                 <div>
                   <h3>Animal Names:</h3>
                   <ul>
@@ -118,7 +118,7 @@ function UploadPage() {
                     ))}
                   </ul>
                 </div>
-              )}
+              )} */}
             </div>
           </div>
         </div>

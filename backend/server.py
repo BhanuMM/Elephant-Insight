@@ -17,13 +17,12 @@ configure_file_uploads(app)
 def handle_upload_image():
     upload_response = upload_image(app)
     
-    # if 'error' in upload_response.get_json():
-    #     return upload_response
     if 'error' in upload_response:
         return jsonify({"error server 1": upload_response['error']})
     
     # Process the uploaded image using your automated pipeline
-    final_results = run_automated_pipeline(os.path.join("Functions/testu", upload_response['filename']))
+    final_results = run_automated_pipeline(upload_response['filename'])
+    # final_results = run_automated_pipeline(os.path.join("Functions/testu", upload_response['filename']))
     
     if 'error' in final_results:
         return jsonify({"error server": final_results['error']})
@@ -31,14 +30,14 @@ def handle_upload_image():
     # Return the final results to the client
     return jsonify({"results": final_results})
 
-@app.route('/')
-def hello():
-    return 'Hello from Flask!'
+# @app.route('/')
+# def hello():
+#     return 'Hello from Flask!'
 
-@app.route('/api/animal_names')
-def animal_names_route():
-    animal_names = get_animal_names()  
-    return jsonify({"animal_names": animal_names})
+# @app.route('/api/animal_names')
+# def animal_names_route():
+#     animal_names = get_animal_names()  
+#     return jsonify({"animal_names": animal_names})
 
 if __name__ == '__main__':
     app.run(debug=True)

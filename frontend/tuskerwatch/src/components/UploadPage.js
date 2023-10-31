@@ -1,5 +1,5 @@
 // src/UploadPage.js
-import React, { useState } from 'react';
+import React, { useState , useEffect } from 'react';
 import '../styles/UploadPage.css';
 import Navbar from './Navbar';
 import Footer from './Footer';
@@ -7,6 +7,15 @@ import Logo2 from '../images/logo2.png';
 
 function UploadPage() {
   const [imageSrc, setImageSrc] = useState(null);
+
+  // const [animalNames, setAnimalNames] = useState([]);
+  // useEffect(() => {
+  //   fetch('http://127.0.0.1:5000/api/animal_names')
+  //     .then((response) => response.json())
+  //     .then((data) => setAnimalNames(data.animal_names))
+  //     .catch((error) => console.error('Error fetching animal names:', error));
+  // }, []);
+
 
   const handleImageUpload = (e) => {
     const file = e.target.files[0];
@@ -52,6 +61,16 @@ function UploadPage() {
               <li>Step 2: View the uploaded image below.</li>
               <li>Step 3: Follow the instructions on the right.</li>
             </ul>
+            {/* {animalNames.length > 0 && (
+                <div>
+                  <h3>Animal Names:</h3>
+                  <ul>
+                    {animalNames.map((name, index) => (
+                      <li key={index}>{name}</li>
+                    ))}
+                  </ul>
+                </div>
+              )} */}
           </div>
         </div>
       </div>

@@ -34,4 +34,6 @@ def predict_elephant_resnet(img_path,model_path):
         print(f"Top {i+1} Prediction: {top_classes_names[i]}, Confidence: {top_confidences[i]:.4f}")
         top_predictions.append([top_classes_names[i],top_confidences[i]])
 
-    return top_predictions
+    top_predictions_serializable = [[name, float(confidence)] for name, confidence in top_predictions]
+
+    return top_predictions_serializable

@@ -13,11 +13,12 @@ def delete_content(folder_path):
 
 
 
-def run_automated_pipeline(image_name):
+def run_automated_pipeline(base_name):
     try:
         folder_to_clear = os.path.join(os.path.dirname(__file__), "runs/detect")
         delete_content(folder_to_clear)
         print(f"Everything inside {folder_to_clear} has been deleted.")
+        image_name, extension = os.path.splitext(base_name)
         print(image_name)
         # %run detect.py --weights best.pt --img 640 --conf 0.25 --source data/images --save-crop 
         import subprocess
@@ -41,42 +42,48 @@ def run_automated_pipeline(image_name):
         leftEar_predictions= []
         rightEar_predictions= []
         tail_predictions= []
+        identified_features =[]
 
         total_feature_predictions = []
 
         from .resnet_detection import predict_elephant_resnet
 
         if os.path.exists(spine_path) and os.path.isdir(spine_path):
-            print('spine')
-            spine_predictions = predict_elephant_resnet(os.path.join(os.path.dirname(__file__), "runs/detect/exp/crops/spine/",image_name), os.path.join(os.path.dirname(__file__), 'elephant-detection-models/spine/best_model.h5'))
+            print('Spine')
+            identified_features.append('Spine')
+            spine_predictions = predict_elephant_resnet(os.path.join(os.path.dirname(__file__), "runs/detect/exp/crops/spine/",image_name+".JPG"), os.path.join(os.path.dirname(__file__), 'elephant-detection-models/spine/best_model.h5'))
             total_feature_predictions.append(spine_predictions)
             for prediction in spine_predictions:
                 print(f"Prediction: {prediction[0]}, Confidence: {prediction[1]:.4f}")
             
         if os.path.exists(face_path) and os.path.isdir(face_path):
-            print('face')
-            face_predictions = predict_elephant_resnet(os.path.join(os.path.dirname(__file__), "runs/detect/exp/crops/face/",image_name), os.path.join(os.path.dirname(__file__), 'elephant-detection-models/face/best_model.h5'))
+            print('Face')
+            identified_features.append('Face')
+            face_predictions = predict_elephant_resnet(os.path.join(os.path.dirname(__file__), "runs/detect/exp/crops/face/",image_name+".JPG"), os.path.join(os.path.dirname(__file__), 'elephant-detection-models/face/best_model.h5'))
             total_feature_predictions.append(face_predictions)
             for prediction in face_predictions:
                 print(f"Prediction: {prediction[0]}, Confidence: {prediction[1]:.4f}")
             
         if os.path.exists(leftEar_path) and os.path.isdir(leftEar_path):
-            print('leftEar')
-            leftEar_predictions = predict_elephant_resnet(os.path.join(os.path.dirname(__file__), "runs/detect/exp/crops/leftEar/",image_name), os.path.join(os.path.dirname(__file__), 'elephant-detection-models/leftEar/best_model.h5'))
+            print('Left Ear')
+            identified_features.append('Left Ear')
+            leftEar_predictions = predict_elephant_resnet(os.path.join(os.path.dirname(__file__), "runs/detect/exp/crops/leftEar/",image_name+".JPG"), os.path.join(os.path.dirname(__file__), 'elephant-detection-models/leftEar/best_model.h5'))
             total_feature_predictions.append(leftEar_predictions)
             for prediction in leftEar_predictions:
                 print(f"Prediction: {prediction[0]}, Confidence: {prediction[1]:.4f}")
             
         if os.path.exists(rightEar_path) and os.path.isdir(rightEar_path):
-            print('rightEar')
-            rightEar_predictions = predict_elephant_resnet(os.path.join(os.path.dirname(__file__), "runs/detect/exp/crops/rightEar/",image_name), os.path.join(os.path.dirname(__file__), 'elephant-detection-models/rightEar/best_model.h5'))
+            print('Right Ear')
+            identified_features.append('Right Ear')
+            rightEar_predictions = predict_elephant_resnet(os.path.join(os.path.dirname(__file__), "runs/detect/exp/crops/rightEar/",image_name+".JPG"), os.path.join(os.path.dirname(__file__), 'elephant-detection-models/rightEar/best_model.h5'))
             total_feature_predictions.append(rightEar_predictions)
             for prediction in rightEar_predictions:
                 print(f"Prediction: {prediction[0]}, Confidence: {prediction[1]:.4f}") 
             
         if os.path.exists(tail_path) and os.path.isdir(tail_path):
-            print('tail')
-            tail_predictions = predict_elephant_resnet(os.path.join(os.path.dirname(__file__), "runs/detect/exp/crops/tail/",image_name), os.path.join(os.path.dirname(__file__), 'elephant-detection-models/tail/best_model.h5'))
+            print('Tail')
+            identified_features.append('Tail')
+            tail_predictions = predict_elephant_resnet(os.path.join(os.path.dirname(__file__), "runs/detect/exp/crops/tail/",image_name+".JPG"), os.path.join(os.path.dirname(__file__), 'elephant-detection-models/tail/best_model.h5'))
             total_feature_predictions.append(tail_predictions)
             for prediction in tail_predictions:
                 print(f"Prediction: {prediction[0]}, Confidence: {prediction[1]:.4f}")
@@ -103,15 +110,17 @@ def run_automated_pipeline(image_name):
         total_confidence = sum(confidence for _, confidence in sorted_merged_array)
 
         # Calculate the percentages and create a new array
-        final_results = [[name, (confidence / total_confidence) * 100] for name, confidence in sorted_merged_array]
+        final_results = [[name, f"{(confidence / total_confidence) * 100:.4f}"] for name, confidence in sorted_merged_array]
         print("+======================= final =====")
+        print(identified_features)
         print(final_results)
+        print('spine -----',spine_predictions)
 
         # uploadfolder_to_clear = os.path.join(os.path.dirname(__file__), "data/images")
         # delete_content(uploadfolder_to_clear)
         # print(f"Everything inside {uploadfolder_to_clear} has been deleted.")
 
-        return final_results
+        return final_results , identified_features , spine_predictions,face_predictions, leftEar_predictions,rightEar_predictions,tail_predictions
 
     except Exception as e:
         return [{'error': str(e)}]

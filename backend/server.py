@@ -20,14 +20,11 @@ def handle_upload_image():
     if 'error' in upload_response:
         return jsonify({"error server 1": upload_response['error']})
     
-    # Process the uploaded image using your automated pipeline
     final_results = run_automated_pipeline(upload_response['filename'])
-    # final_results = run_automated_pipeline(os.path.join("Functions/testu", upload_response['filename']))
     
     if 'error' in final_results:
         return jsonify({"error server": final_results['error']})
     
-    # Return the final results to the client
     return jsonify({"results": final_results})
 
 # @app.route('/')

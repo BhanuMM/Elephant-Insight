@@ -12,11 +12,12 @@ venv/
 
 .DS_Store
 
+
 resources/
 !resources/automatedpipeline.py
 !resources/resnet_detection.py
 
-testu/
+Elephants/
 
 # Diagnostic reports (https://nodejs.org/api/report.html)
 report.[0-9]*.[0-9]*.[0-9]*.[0-9]*.json

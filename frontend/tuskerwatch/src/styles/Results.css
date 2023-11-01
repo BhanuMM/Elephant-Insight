@@ -1,0 +1,18 @@
+/* Results.css */
+.Results {
+    /* text-align: center; */
+  position: relative;
+  background-color: #000000;
+  background: url('../images/bg1.jpg') center center;
+  background-size: cover;
+  /* opacity: 0.1; */
+  height: 100%;
+  }
+  
+  .lightfont {
+    /* Define styles for text with lightfont class */
+    color: #fdfdfd;
+  }
+  
+  /* Add any additional styling you need for the Results component */
+  

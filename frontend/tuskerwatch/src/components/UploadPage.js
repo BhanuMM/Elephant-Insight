@@ -1,20 +1,14 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import '../styles/UploadPage.css';
 import Navbar from './Navbar';
 import Footer from './Footer';
 import Logo2 from '../images/logo2.png';
 
 function UploadPage() {
+  const navigate = useNavigate();
   const [imageSrc, setImageSrc] = useState(null);
   const [uploadedImage, setUploadedImage] = useState(null);
-
-  // const [animalNames, setAnimalNames] = useState([]);
-  // useEffect(() => {
-  //   fetch('http://127.0.0.1:5000/api/animal_names')
-  //     .then((response) => response.json())
-  //     .then((data) => setAnimalNames(data.animal_names))
-  //     .catch((error) => console.error('Error fetching animal names:', error));
-  // }, []);
 
   const handleImageUpload = (e) => {
     const file = e.target.files[0];
@@ -49,6 +43,7 @@ function UploadPage() {
         })
         .then((data) => {
           console.log("BM -file uploaded" ,data.results);
+          navigate('/results', { state: {results:data.results} });
         })
         .catch((error) => {
           console.error('Error uploading image:', error);

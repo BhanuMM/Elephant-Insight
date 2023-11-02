@@ -1,14 +1,16 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import '../styles/UploadPage.css';
 import Navbar from './Navbar';
 import Footer from './Footer';
 import Logo2 from '../images/logo2.png';
+import loadi from '../images/loading.gif';
 
 function UploadPage() {
   const navigate = useNavigate();
   const [imageSrc, setImageSrc] = useState(null);
   const [uploadedImage, setUploadedImage] = useState(null);
+  const [loading, setLoading] = useState(false); // New loading state
 
   const handleImageUpload = (e) => {
     const file = e.target.files[0];
@@ -27,6 +29,8 @@ function UploadPage() {
 
   const handleIdentifyClick = () => {
     if (uploadedImage) {
+      setLoading(true); // Show the loading screen
+
       const formData = new FormData();
       formData.append('file', uploadedImage);
 
@@ -42,11 +46,14 @@ function UploadPage() {
           }
         })
         .then((data) => {
-          console.log("BM -file uploaded" ,data.results);
-          navigate('/results', { state: {results:data.results} });
+          console.log('BM - file uploaded', data.results);
+          navigate('/results', { state: { results: data.results } });
         })
         .catch((error) => {
           console.error('Error uploading image:', error);
+        })
+        .finally(() => {
+          setLoading(false); // Hide the loading screen
         });
     }
   };
@@ -80,11 +87,26 @@ function UploadPage() {
                   className="mb-3 lightfont rounded-pill"
                 />
               </form>
-              {imageSrc && (
+              {loading ? ( // Loading screen
+                <div className="loading-screen">
+                  <h3>
+                  IDENTIFYING
+              </h3>
+                  <img
+                    src={loadi}
+                    alt="Uploaded Image"
+                    className="img-fluid"
+                    style={{ maxWidth: '90px' }}
+                  />
+                <h3>
+ ELEPHANT
+              </h3>
+              </div>
+              ) : imageSrc && (
                 <div className="col-md-12 text-center image-box">
                   <button
                     className="btn btn-primary rounded-pill btn-lg green2-button mt-2 mb-3"
-                    onClick={handleIdentifyClick} 
+                    onClick={handleIdentifyClick}
                   >
                     Start Identifying
                   </button>
@@ -104,13 +126,13 @@ function UploadPage() {
                 <li>Step 2: View the uploaded image below.</li>
                 <li>Step 3: Follow the instructions on the right.</li>
               </ul>
-                {/* {animalNames.length > 0 && (
+              {/* {animalNames.length > 0 && (
                 <div>
                   <h3>Animal Names:</h3>
                   <ul>
                     {animalNames.map((name, index) => (
                       <li key={index}>{name}</li>
-                    ))}
+                    )}
                   </ul>
                 </div>
               )} */}

@@ -25,8 +25,29 @@ body {
   .lightfont {
     /* Define styles for text with lightfont class */
     color: #fdfdfd;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
+
   }
-  
+  .lightfontbold {
+    /* Define styles for text with lightfont class */
+    color: #fdfdfd;
+    font-weight: 600;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
+
+  }
+  .boldfont{
+    font-weight: 600;
+    color: #D8E9A8;
+  }
+  .boldfontprecition{
+    font-weight: 600;
+    color: #ffffff;
+  }
+  .boldfontcon{
+    font-weight: 600;
+    color: #baffd7;
+  }
+
   /* Add any additional styling you need for the Results component */
   /* Add this to your Results.css file */
 
@@ -80,7 +101,7 @@ body {
   text-align: center;
   padding-left: '150px' !important;
   font-weight: bold;
-  background-color: rgb(0, 92, 15);
+  background-color: #4E9F3D;
 }
 .popup-content {
   margin: auto;

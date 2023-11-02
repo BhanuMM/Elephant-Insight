@@ -50,7 +50,7 @@ def run_automated_pipeline(base_name):
 
         if os.path.exists(spine_path) and os.path.isdir(spine_path):
             print('Spine')
-            identified_features.append('Spine')
+            identified_features.append(['Spine','2'])
             spine_predictions = predict_elephant_resnet(os.path.join(os.path.dirname(__file__), "runs/detect/exp/crops/spine/",image_name+".JPG"), os.path.join(os.path.dirname(__file__), 'elephant-detection-models/spine/best_model.h5'))
             total_feature_predictions.append(spine_predictions)
             for prediction in spine_predictions:
@@ -58,7 +58,7 @@ def run_automated_pipeline(base_name):
             
         if os.path.exists(face_path) and os.path.isdir(face_path):
             print('Face')
-            identified_features.append('Face')
+            identified_features.append(['Face','3'])
             face_predictions = predict_elephant_resnet(os.path.join(os.path.dirname(__file__), "runs/detect/exp/crops/face/",image_name+".JPG"), os.path.join(os.path.dirname(__file__), 'elephant-detection-models/face/best_model.h5'))
             total_feature_predictions.append(face_predictions)
             for prediction in face_predictions:
@@ -66,7 +66,7 @@ def run_automated_pipeline(base_name):
             
         if os.path.exists(leftEar_path) and os.path.isdir(leftEar_path):
             print('Left Ear')
-            identified_features.append('Left Ear')
+            identified_features.append(['Left-Ear','4'])
             leftEar_predictions = predict_elephant_resnet(os.path.join(os.path.dirname(__file__), "runs/detect/exp/crops/leftEar/",image_name+".JPG"), os.path.join(os.path.dirname(__file__), 'elephant-detection-models/leftEar/best_model.h5'))
             total_feature_predictions.append(leftEar_predictions)
             for prediction in leftEar_predictions:
@@ -74,7 +74,7 @@ def run_automated_pipeline(base_name):
             
         if os.path.exists(rightEar_path) and os.path.isdir(rightEar_path):
             print('Right Ear')
-            identified_features.append('Right Ear')
+            identified_features.append(['Right-Ear','5'])
             rightEar_predictions = predict_elephant_resnet(os.path.join(os.path.dirname(__file__), "runs/detect/exp/crops/rightEar/",image_name+".JPG"), os.path.join(os.path.dirname(__file__), 'elephant-detection-models/rightEar/best_model.h5'))
             total_feature_predictions.append(rightEar_predictions)
             for prediction in rightEar_predictions:
@@ -82,7 +82,7 @@ def run_automated_pipeline(base_name):
             
         if os.path.exists(tail_path) and os.path.isdir(tail_path):
             print('Tail')
-            identified_features.append('Tail')
+            identified_features.append(['Tail','6'])
             tail_predictions = predict_elephant_resnet(os.path.join(os.path.dirname(__file__), "runs/detect/exp/crops/tail/",image_name+".JPG"), os.path.join(os.path.dirname(__file__), 'elephant-detection-models/tail/best_model.h5'))
             total_feature_predictions.append(tail_predictions)
             for prediction in tail_predictions:
@@ -120,7 +120,7 @@ def run_automated_pipeline(base_name):
         # delete_content(uploadfolder_to_clear)
         # print(f"Everything inside {uploadfolder_to_clear} has been deleted.")
 
-        return final_results , identified_features , spine_predictions,face_predictions, leftEar_predictions,rightEar_predictions,tail_predictions
+        return final_results , identified_features , spine_predictions,face_predictions, leftEar_predictions,rightEar_predictions,tail_predictions ,base_name
 
     except Exception as e:
         return [{'error': str(e)}]

@@ -4,7 +4,8 @@ import '../styles/UploadPage.css';
 import Navbar from './Navbar';
 import Footer from './Footer';
 import Logo2 from '../images/logo2.png';
-import loadi from '../images/loading.gif';
+import Logo1 from '../images/logo1.png';
+import loadi from '../images/test.gif';
 
 function UploadPage() {
   const navigate = useNavigate();
@@ -64,18 +65,18 @@ function UploadPage() {
         <Navbar />
         <div className="container">
           <div className="row mt-5 mb-3">
-            <div className="col-12 mt-3 text-center">
+            {/* <div className="col-12 mt-3 text-center">
               <img
                 src={Logo2}
                 alt="Your Logo"
                 className="centered-logo"
                 style={{ maxWidth: '400px' }}
               />
-            </div>
+            </div> */}
             <hr />
           </div>
           <div className="row">
-            <div className="col-md-6 text-center">
+            <div className="col-md-6 text-center mt-3">
               <h1 className="lightfont"> Upload Your Image Here</h1>
               <form encType="multipart/form-data">
                 {/* Add the form element with enctype set to "multipart/form-data" */}
@@ -104,27 +105,34 @@ function UploadPage() {
               </div>
               ) : imageSrc && (
                 <div className="col-md-12 text-center image-box">
-                  <button
-                    className="btn btn-primary rounded-pill btn-lg green2-button mt-2 mb-3"
-                    onClick={handleIdentifyClick}
-                  >
-                    Start Identifying
-                  </button>
+                 
                   <img
                     src={imageSrc}
                     alt="Uploaded Image"
-                    className="img-fluid"
+                    className="img-fluid mt-5"
                     style={{ maxWidth: '600px' }}
                   />
+                   <button
+                    className="btn btn-primary rounded-pill btn-lg green2-button mt-5 mb-5"
+                    onClick={handleIdentifyClick}
+                  >
+                   START IDENTIFYING PROCESS 
+                  </button>
                 </div>
               )}
             </div>
-            <div className="col-md-6 px-5">
-              <h1 className="lightfont mb-3">How Elephantinsight Works</h1>
+            <div className="col-md-6 px-5 mt-3">
+            <img
+                src={Logo1}
+                alt="Your Logo"
+                style={{ maxWidth: '450px' }}
+              />
+              <h4 className="lightfont mb-3">How This Works</h4>
+              {/* <hr/> */}
               <ul className="lightfont">
-                <li>Step 1: Upload an image on the left.</li>
-                <li>Step 2: View the uploaded image below.</li>
-                <li>Step 3: Follow the instructions on the right.</li>
+                <li>Upload your image on the left.</li>
+                <li>Display the uploaded image .</li>
+                <li>Start identifying process</li>
               </ul>
               {/* {animalNames.length > 0 && (
                 <div>

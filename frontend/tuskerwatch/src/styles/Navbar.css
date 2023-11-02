@@ -18,6 +18,10 @@
   color: #dbdbdb; /* Change link color */
   font-weight: bold;
 }
+.nav-link:hover {
+  color: #D8E9A8; /* Change link color */
+  font-weight: bold;
+}
 
 footer {
   background-color: #333;

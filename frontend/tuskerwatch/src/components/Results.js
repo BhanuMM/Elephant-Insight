@@ -61,30 +61,31 @@ function Results() {
           </div>
           <div className="row">
             <div className="col-md-6">
-              <p className="lightfont">
-                
-                This elephant has been identified by:
-                {results[1].map((result, index) => (
-                  <span key={index}>{result[0]}&nbsp;</span>
-                ))}
-              </p>
+              
               <div className="image-box" style={{ maxWidth: '600px' }}>
               
-                  <img
+                  {/* <img
                   src={imageData}
                   alt="Annotated Image"
                   className="img-fluid"
                   style={{ maxWidth: '100%' }}
-                />
+                /> */}
                 <img
                   src={`${process.env.PUBLIC_URL}/images/Elephants/ele.JPG`}
                   alt="Your Image"
-                  className="img-fluid"
+                  className="img-fluid mb-1"
                   style={{ maxWidth: '100%' }}
                 />
               </div>
+              <p className="lightfont">
+                
+                This elephant has been identified by : 
+                {results[1].map((result, index) => (
+                  <span key={index}>{result[0]}&nbsp;</span>
+                ))}
+              </p>
               <hr/>
-              <h2 className="lightfont mt-2">Best Prediction</h2>
+              <h2 className="lightfontbold ">Best Prediction :</h2>
               <div className="row">
               
              
@@ -105,8 +106,8 @@ function Results() {
                   </div>
                 </div>
                 <div className="col-md-6">
-                  <h4 className="lightfont">Name: {results[0][0][0]}</h4>
-                  <h4 className="lightfont">Confidence: {results[0][0][1]}%</h4>
+                  <h5 className="lightfont">Name:<span className='boldfont'> {results[0][0][0]}</span> </h5>
+                  <h6 className="lightfont mb-4">Confidence: <span className='boldfont'> {results[0][0][1]}% </span> </h6>
                   {parseFloat(results[0][0][1]) > 50 && (
                  <div className="rounded-box-green mb-3" style={{  padding: '10px' }}>
                    
@@ -120,7 +121,7 @@ function Results() {
               </div>
             </div>
             <div className="col-md-6 mb-5">
-              <h2 className="lightfont mb-3">Top Predictions</h2>
+              <h2 className="lightfontbold mb-3">Top Predictions</h2>
               <div className="tabs-container mb-5">
                 <ul className="tabs-list">
                     <li className={`tab-item ${activeTab === 6 ? 'active' : ''}`}
@@ -140,10 +141,10 @@ function Results() {
                     key="6"
                     className={`tab-content ${activeTab === 6 ? 'active' : ''}`}
                   >
-                    {results[0].map((result, index) => (
+                    {results[0].slice(0, 5).map((result, index) => (
                     <div className="row mt-2">
-                      <div className="col-md-6">
-                        <div className="image-box" style={{ maxWidth: '200px' }}>
+                      <div className="col-md-6 text-center">
+                        <div className="image-box " style={{ maxWidth: '200px' }}>
                           <img
                             src={`${process.env.PUBLIC_URL}/images/Elephants/${result[0]}.JPG`}
                             alt={result[0]}
@@ -152,9 +153,9 @@ function Results() {
                           />
                         </div>
                       </div>
-                      <div className="col-md-6">
-                        <h4 className="lightfont">Name: {result[0]}</h4>
-                        <h4 className="lightfont">Confidence: {result[1]}%</h4>
+                      <div className="col-md-6" style={{ paddingTop: '30px' }}>
+                        <h5 className="lightfont">Name: <span className='boldfontprecition'> {result[0]}</span></h5>
+                        <h6 className="lightfont">Confidence: <span className='boldfontcon'> {result[1]}%</span></h6>
                       </div>
                     </div>
                      ))}
@@ -176,9 +177,9 @@ function Results() {
                           />
                         </div>
                       </div>
-                      <div className="col-md-6">
-                        <h4 className="lightfont">Name: {secondresult[0]}</h4>
-                        <h4 className="lightfont">Confidence: {secondresult[1].toFixed(4)}%</h4>
+                      <div className="col-md-6 " style={{ paddingTop: '30px' }}>
+                        <h5 className="lightfont">Name: <span className='boldfontprecition'>{secondresult[0]}</span></h5>
+                        <h6 className="lightfont">Confidence: <span className='boldfontcon'>{(secondresult[1]*100).toFixed(4)}%</span></h6>
                       </div>
                     </div>
                     ))}

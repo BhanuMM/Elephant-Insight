@@ -24,13 +24,14 @@
   margin: 0 auto 20px;
 }
 .green-button {
-    background-color: #269f2a; /* Green background color */
+  border-radius: 15px !important;
+    background-color: #2b6f39; /* Green background color */
     color: white; /* Text color */
     border: 2px solid #000; /* Black border */
   }
   
   .green-button:hover {
-    background-color: #55eb55; /* Light green background color on hover */
+    background-color: #D8E9A8; /* Light green background color on hover */
     color: #000; /* Black text color on hover */
     border: 2px solid #000; /* Black border */
   }

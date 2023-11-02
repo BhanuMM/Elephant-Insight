@@ -32,11 +32,11 @@ def get_image(image_filename):
     app.config["UPLOADED_FOLDER"] = "resources/runs/detect/exp"
     image_path = os.path.join(app.config['UPLOADED_FOLDER'], image_filename)
     print(image_path)
-    return send_file(image_path)
+    return send_file(image_path , )
     
-@app.route('/')
-def hello():
-    return 'Hello from Flask!'
+# @app.route('/')
+# def hello():
+#     return 'Hello from Flask!'
 
 # @app.route('/api/animal_names')
 # def animal_names_route():

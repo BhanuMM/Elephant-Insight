@@ -16,26 +16,18 @@ function Results() {
   const [imageData, setImageData] = useState(null);
 
   useEffect(() => {
-    // Make a request to get the image file
-    console.log('Component is mounted');
-    fetch('api/getimage/komali.JPG')
+    fetch('http://127.0.0.1:5000/api/getimage/' + results[7])
       .then((response) => response.blob())
       .then((blob) => {
-        // Convert the blob data to a URL
         const objectURL = URL.createObjectURL(blob);
         setImageData(objectURL);
-        console.log('url'+objectURL);
-        console.log('imgdata'+imageData);
+        console.log('Image data received:', objectURL);
       })
       .catch((error) => {
         console.error('Error fetching image:', error);
       });
   }, []);
 
-  useEffect(() => {
-    // Log imageData inside this effect to see its updated value
-    console.log('imageData:', imageData);
-  }, [imageData]); // This effect runs when imageData changes
 
   // Define state to manage active tab
   const [activeTab, setActiveTab] = useState(0);
@@ -64,18 +56,18 @@ function Results() {
               
               <div className="image-box" style={{ maxWidth: '600px' }}>
               
-                  {/* <img
+                  <img
                   src={imageData}
                   alt="Annotated Image"
-                  className="img-fluid"
+                  className="img-fluid mb-1"
                   style={{ maxWidth: '100%' }}
-                /> */}
-                <img
+                />
+                {/* <img
                   src={`${process.env.PUBLIC_URL}/images/Elephants/ele.JPG`}
                   alt="Your Image"
                   className="img-fluid mb-1"
                   style={{ maxWidth: '100%' }}
-                />
+                /> */}
               </div>
               <p className="lightfont">
                 
@@ -89,11 +81,7 @@ function Results() {
               <div className="row">
               
              
-                {parseFloat(results[0][0][1]) < 50 && (
-                 <div className="rounded-box mb-3" style={{  padding: '10px' }}>
-                    Confidence is less than 50%.
-                </div>
-                )}
+               
                 <div className="col-md-6">
                   <div className="image-box" style={{ maxWidth: '300px' }}>
                  
@@ -115,6 +103,11 @@ function Results() {
                      <div>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</div>
                     </Popup>
                     &nbsp; Confidence is more than 50%.
+                </div>
+                )}
+                 {parseFloat(results[0][0][1]) < 50 && (
+                 <div className="rounded-box mb-3" style={{  padding: '10px' }}>
+                    Confidence is less than 50%.
                 </div>
                 )}
                 </div>

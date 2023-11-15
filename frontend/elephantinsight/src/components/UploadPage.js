@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import '../styles/UploadPage.css';
 import Navbar from './Navbar';
 import Footer from './Footer';
-import Logo2 from '../images/logo2.png';
+// import Logo2 from '../images/logo2.png';
 import Logo1 from '../images/logo1.png';
 import loadi from '../images/test.gif';
 

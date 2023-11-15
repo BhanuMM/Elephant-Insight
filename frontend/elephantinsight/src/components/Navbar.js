@@ -7,7 +7,7 @@ function Navbar() {
   return (
     <nav className="navbar navbar-expand-lg navbar-light fixed-top">
       <div className="container">
-        <a className="navbar-brand" href="#">
+        <a className="navbar-brand">
           <img src={Logo} alt="Logo" className="logo-img" />
         </a>
         <div className="collapse navbar-collapse justify-content-end">
@@ -21,12 +21,12 @@ function Navbar() {
               </a> */}
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="#">
+              <a className="nav-link">
                 About Research
               </a>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="#">
+              <a className="nav-link" >
                 Team
               </a>
             </li>

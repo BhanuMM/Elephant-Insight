@@ -16,7 +16,8 @@ function Results() {
   const [imageData, setImageData] = useState(null);
 
   useEffect(() => {
-    fetch('http://127.0.0.1:5000/api/getimage/' + results[7])
+    console.log("wonwoenwoein");
+      fetch('http://127.0.0.1:5000/api/getimage/' + results[7])
       .then((response) => response.blob())
       .then((blob) => {
         const objectURL = URL.createObjectURL(blob);
@@ -26,11 +27,12 @@ function Results() {
       .catch((error) => {
         console.error('Error fetching image:', error);
       });
-  }, []);
+  }, [results]);
 
 
   // Define state to manage active tab
-  const [activeTab, setActiveTab] = useState(0);
+  const [activeTab, setActiveTab] = useState(6);
+  
 
   // Function to change the active tab
   const changeTab = (tabIndex) => {
@@ -49,6 +51,7 @@ function Results() {
             {/* <div className="col-12 mt-3 text-center">
               <h1 className="lightfont">Results</h1>
             </div> */}
+            
             <hr />
           </div>
           <div className="row">

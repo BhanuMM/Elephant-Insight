@@ -11,7 +11,8 @@ function UploadPage() {
   const navigate = useNavigate();
   const [imageSrc, setImageSrc] = useState(null);
   const [uploadedImage, setUploadedImage] = useState(null);
-  const [loading, setLoading] = useState(false); // New loading state
+  const [loading, setLoading] = useState(false);
+  const [NoElephantError, setNoElephantError] = useState(false); // New loading state
 
   const handleImageUpload = (e) => {
     const file = e.target.files[0];
@@ -25,6 +26,7 @@ function UploadPage() {
 
       reader.readAsDataURL(file);
       setUploadedImage(file);
+      setNoElephantError(false);
     }
   };
 
@@ -48,7 +50,13 @@ function UploadPage() {
         })
         .then((data) => {
           console.log('BM - file uploaded', data.results);
-          navigate('/results', { state: { results: data.results } });
+          console.log( 'Top 5 Array length',data.results[0].length); 
+          if (data.results[0].length===0){
+            setNoElephantError(true);
+          }else{
+            navigate('/results', { state: { results: data.results } });
+          }
+          
         })
         .catch((error) => {
           console.error('Error uploading image:', error);
@@ -78,6 +86,7 @@ function UploadPage() {
           <div className="row">
             <div className="col-md-6 text-center mt-3">
               <h1 className="lightfont"> Upload Your Image Here</h1>
+             
               <form encType="multipart/form-data">
                 {/* Add the form element with enctype set to "multipart/form-data" */}
                 <input
@@ -88,6 +97,13 @@ function UploadPage() {
                   className="mb-3 lightfont rounded-pill"
                 />
               </form>
+              { NoElephantError &&
+                    <div className="rounded-box mb-3" style={{  padding: '10px' }}>
+                      Warning: No Identifiable Elephant Found !
+                            <br/>
+                      Please ensure your image includes a visible elephant before proceeding.
+                    </div>
+              }
               {loading ? ( // Loading screen
                 <div className="loading-screen">
                   <h3>
@@ -105,19 +121,19 @@ function UploadPage() {
               </div>
               ) : imageSrc && (
                 <div className="col-md-12 text-center image-box">
-                 
-                  <img
-                    src={imageSrc}
-                    alt="Uploaded Image"
-                    className="img-fluid mt-5"
-                    style={{ maxWidth: '600px' }}
-                  />
-                   <button
-                    className="btn btn-primary rounded-pill btn-lg green2-button mt-5 mb-5"
+                  <button
+                    className="btn btn-primary rounded-pill btn-lg green2-button mt-2 mb-2"
                     onClick={handleIdentifyClick}
                   >
                    START IDENTIFYING PROCESS 
                   </button>
+                  <img
+                    src={imageSrc}
+                    alt="Uploaded Image"
+                    className="img-fluid mt-2"
+                    style={{ maxWidth: '600px' }}
+                  />
+                  
                 </div>
               )}
             </div>

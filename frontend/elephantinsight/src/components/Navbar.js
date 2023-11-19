@@ -1,5 +1,5 @@
 import React from 'react';
-import '../styles/Navbar.css'; // Your custom styles
+import '../styles/Navbar.css'; 
 import Logo from '../images/logo1.png';
 import { Link } from 'react-router-dom';
 

@@ -25,15 +25,16 @@
 }
 .green-button {
   border-radius: 15px !important;
-    background-color: #2b6f39; /* Green background color */
+  font-weight: 600;
+    background-color: #346b3f; /* Green background color */
     color: white; /* Text color */
-    border: 2px solid #000; /* Black border */
+    border: 2px solid #00000000; /* Black border */
   }
   
   .green-button:hover {
     background-color: #D8E9A8; /* Light green background color on hover */
     color: #000; /* Black text color on hover */
-    border: 2px solid #000; /* Black border */
+    border: 2px solid #00000000; /* Black border */
   }
 
 /* Home.css */

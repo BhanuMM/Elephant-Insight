@@ -5,8 +5,6 @@ import Navbar from './Navbar';
 import Footer from './Footer';
 import Popup from 'reactjs-popup';
 import 'reactjs-popup/dist/index.css';
-import infoicon from '../images/info.png';
-// import annotatedimage from '/Users/bhanuji/Bhanuji/Projects/TuskerWatch/backend/resources/runs/detect/exp/Kamani.JPG';
 
 function Results() {
   const location = useLocation();
@@ -98,19 +96,20 @@ function Results() {
                 </div>
                 <div className="col-md-6">
                   <h5 className="lightfont">Name:<span className='boldfont'> {results[0][0][0]}</span> </h5>
-                  <h6 className="lightfont mb-4">Confidence: <span className='boldfont'> {results[0][0][1]}% </span> </h6>
-                  {parseFloat(results[0][0][1]) > 50 && (
-                 <div className="rounded-box-green mb-3" style={{  padding: '10px' }}>
-                   
-                    <Popup trigger={<button className='popupbutton'>+</button>} position="top left">
-                     <div>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</div>
-                    </Popup>
-                    &nbsp; Confidence is more than 50%.
-                </div>
+                  <h6 className="lightfont mb-1">Confidence: <span className='boldfont'> {results[0][0][1]}% </span> </h6>
+                  {parseFloat(results[0][0][1]) > 60 && (
+                    
+                    <p style={{  fontSize: '12px' }}>
+                   * Identification Confidence is more than 60%.
+                    </p>
                 )}
-                 {parseFloat(results[0][0][1]) < 50 && (
-                 <div className="rounded-box mb-3" style={{  padding: '10px' }}>
-                    Confidence is less than 50%.
+                 {parseFloat(results[0][0][1]) < 60 && (
+                 <div className="rounded-box mb-3 mt-3" style={{  padding: '10px' }}>
+                  <Popup trigger={<button className='popupbutton'>+</button>} position="top left">
+                     <div>Our analysis has revealed a significant insight regarding user-provided images of elephants that fall outside the classes for which the models are trained. In such cases, it is highly likely that the models will produce predictions with a confidence level below 60% for the top-ranked prediction. This outcome can be attributed to the inherent rarity of an elephant not belonging to the trained classes possessing all the exact physical traits closely resembling those within the trained dataset.</div>
+                    </Popup>
+                    &nbsp; 
+                    Confidence is less than 60%.
                 </div>
                 )}
                 </div>

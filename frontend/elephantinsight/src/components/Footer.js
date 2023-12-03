@@ -4,7 +4,7 @@ import '../styles/Navbar.css';
 function Footer() {
   return (
     <footer>
-      &copy;2023- 4th Year IS Research Group 6
+      &copy;2023 - ElephIDynamics (Group 6)
     </footer>
   );
 }

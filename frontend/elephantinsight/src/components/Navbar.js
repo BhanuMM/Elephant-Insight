@@ -21,14 +21,14 @@ function Navbar() {
               </a> */}
             </li>
             <li className="nav-item">
-              <a className="nav-link">
-                About Research
-              </a>
+            <Link to="/about" className="nav-link">
+            About Research
+            </Link>
             </li>
             <li className="nav-item">
-              <a className="nav-link" >
-                Team
-              </a>
+            <Link to="/team" className="nav-link">
+            Team
+            </Link>
             </li>
             
             
